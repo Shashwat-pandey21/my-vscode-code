@@ -3,6 +3,12 @@ using namespace std;
 
 void pushAtBottom(stack<int>& st, int val){
 
+    if(st.empty()){
+        cout << "Stack is empty cant put at bottom" << endl;
+        return;
+    }
+
+
     stack<int> temp;
 
     // st -> temp

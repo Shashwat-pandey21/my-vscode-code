@@ -18,7 +18,6 @@ int helper(int i, int j, vector<int>&arr){
                          
 }
 int main(){
-
     int n;
 
     cin >> n;
@@ -40,8 +39,5 @@ int main(){
 
         }
     }
-
-
     cout << helper(0,n-1,arr);
-
 }

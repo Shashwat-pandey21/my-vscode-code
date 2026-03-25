@@ -1,36 +1,48 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+//display
 void display(stack<int>& st){
 
     if(st.empty()) return;
 
-    int x = st.top();
+    int topElement = st.top();
 
     st.pop();
 
     display(st);
 
-    cout << x << " ";
+    cout << topElement << " ";
     
-    st.push(x);   
+    //backtrack
+    st.push(topElement);   
 }
 
+
+
+
+//pushAtBottom
 void pushAtBottom( stack<int> &st, int val){
 
+
+    //base case
     if(st.empty()){
         st.push(val);
         return;
     }
 
-    int x = st.top();
+    int topElement = st.top();
 
     st.pop();
 
     pushAtBottom(st,val);
     
-    st.push(x);
+    //backtrack
+    st.push(topElement);
 }
+
+
+
 
 int main(){
 
@@ -43,6 +55,7 @@ int main(){
     st.push(5);
 
     display(st);
+
     cout << endl;
 
     pushAtBottom(st,-10);

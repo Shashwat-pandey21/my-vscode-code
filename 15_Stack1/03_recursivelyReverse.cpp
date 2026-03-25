@@ -1,23 +1,35 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void reversePrint(stack<int>& st){
+void insertAtBottom(stack<int>& st, int x){
+    if(st.empty()){
+        st.push(x);
+        return;
+    }
 
-    if(st.empty()) return;
-
-    int x = st.top();
-
-    cout << x << " ";
-
+    int topElement = st.top();
     st.pop();
 
-    reversePrint(st);
-    
-    st.push(x);   // stack restore
+    insertAtBottom(st, x);
+
+    st.push(topElement);
+}
+
+
+
+void reverseStack(stack<int>& st){
+    if(st.empty()) return;
+
+    int target = st.top();
+    st.pop();
+
+    reverseStack(st);
+
+    //ab jo target nikal kr rkha h use bottom me daal do 
+    insertAtBottom(st, target);
 }
 
 int main(){
-
     stack<int> st;
 
     st.push(1);
@@ -26,6 +38,12 @@ int main(){
     st.push(4);
     st.push(5);
 
-    reversePrint(st);
+    reverseStack(st);
 
+    while(!st.empty()){
+        cout << st.top() << " ";
+        st.pop();
+    }
+
+    return 0;
 }
